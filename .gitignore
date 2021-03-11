@@ -1,3 +1,5 @@
-*.ccrback
+test/
 
-*.ignore
+/target
+
+*.lock

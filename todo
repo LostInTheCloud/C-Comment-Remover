@@ -1,7 +1,0 @@
-rename old files to name.ending.back (mv test.c test.c.back?)
-
-parse input to file ending vector
-
-copy content of files, 
-    leave out everything from // until LF !linux windows endings!
-    leave out everything after /* until */
