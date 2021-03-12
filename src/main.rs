@@ -7,6 +7,7 @@ use std::{
 
 mod codeonly_c;
 mod codeonly_rs;
+mod codeonly_py;
 
 fn main()
 {
