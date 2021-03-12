@@ -12,7 +12,11 @@ mod codeonly_py;
 fn main()
 {
     let args: Vec<String> = env::args().collect();
-    assert!(args.len() == 2);
+    if args.len() != 2
+    {
+        println!("usage: codeonly [directory]");
+        return;
+    }
     visit_dirs(Path::new(&args[1]), &handle_file).unwrap();
 }
 
