@@ -1,7 +1,6 @@
 use std::{
     self, fs,
     fs::{DirEntry, File},
-    io,
     io::prelude::*,
 };
 
@@ -9,13 +8,6 @@ pub fn remove(file: &DirEntry)
 {
     let mut output: Vec<char> = Vec::new();
     let filename: String = file.path().display().to_string();
-    println!("removing comments from {}? (Y/n)", filename);
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    if input.contains("n")
-    {
-        return;
-    }
     let contents = fs::read_to_string(filename).expect("Something went wrong reading the file");
     let arr: Vec<char> = contents.chars().collect();
     let mut i = 0;

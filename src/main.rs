@@ -44,9 +44,22 @@ fn handle_file(file: &DirEntry)
     {
         match *parts.last().unwrap()
         {
-            "c" => codeonly_c::remove(file),
-            "rs" => codeonly_rs::remove(file),
+            "c" => interactive(file, &codeonly_c::remove),
+            "rs" => interactive(file, &codeonly_rs::remove),
+            "py" => interactive(file, &codeonly_py::remove),
             _ => return,
         }
+    }
+}
+
+fn interactive(file: &DirEntry, fun: &dyn Fn(&DirEntry))
+{
+    let filename: String = file.path().display().to_string();
+    println!("removing comments from {}? (Y/n)", filename);
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    if !input.contains("n")
+    {
+        fun(file);
     }
 }
